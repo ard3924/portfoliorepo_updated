@@ -1,18 +1,24 @@
-# TODO: Update Skills Section to Use Local SVG Icons
-
-## Tasks
-- [ ] Import SVG icons from assets folder in App.jsx
-- [ ] Update skillIcons object to use imported SVGs instead of CDN links
-- [ ] Test the app to ensure icons display correctly
-- [ ] Check for any styling issues with imported SVGs
+# Mobile UI Optimization Plan
 
 ## Information Gathered
-- Skills section uses skillIcons object with external CDN links
-- Assets folder contains matching SVG icons (e.g., css3-original.svg, gemini.svg)
-- Some icons are already local (e.g., Bot component for genai)
-- Need to replace CDN img tags with imported SVG components
+- Project is a React portfolio website using Tailwind CSS for styling.
+- Components include Navbar, Hero, About, Skills, Experience, Projects, Education, Certifications, Contact.
+- Current responsive design uses Tailwind breakpoints (sm, md, lg).
+- Some text sizes and grid layouts may not be optimal for mobile devices.
 
 ## Plan
-- Import SVGs as React components at the top of App.jsx
-- Replace CDN img elements in skillIcons with imported components
-- Ensure proper sizing and styling (w-12 h-12 classes)
+- [ ] Adjust Hero section text sizes for better mobile readability.
+- [ ] Optimize Skills section grid layout for mobile screens.
+- [ ] Improve image responsiveness across components.
+- [ ] Adjust padding and margins for mobile devices.
+- [ ] Ensure touch-friendly buttons and interactive elements.
+- [ ] Fix potential overlapping of fixed elements on small screens.
+- [ ] Make Projects carousel more mobile-friendly.
+
+## Dependent Files to be Edited
+- src/App.jsx: Main component file containing all sections.
+
+## Followup Steps
+- [ ] Test the changes on various mobile screen sizes.
+- [ ] Verify touch interactions work properly.
+- [ ] Check for any layout breaks or performance issues.
