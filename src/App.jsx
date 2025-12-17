@@ -759,7 +759,7 @@ const Projects = () => {
       image: localfinds,
       technologies: ['React.js', 'Node.js', 'MongoDB', 'Express.js', 'Tailwind CSS', 'Azure'],
       github: 'https://github.com/ard3924/localfinds.git',
-      demo: 'https://localfinds-app-98762-eph3c9geffgne5bx.canadacentral-01.azurewebsites.net/'
+      demo: 'https://localfinds-two.vercel.app/'
     },
     {
       title: 'Ignite - Freelance Collaboration Platform',
