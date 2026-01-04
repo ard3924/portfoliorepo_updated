@@ -16,6 +16,7 @@ import ignite from './assets/ignite.png';
 import aiTextbook from './assets/AI TextBook Assistant.png';
 import malware from './assets/Malware.png';
 import foodDeli from './assets/Food Deli.png';
+import sowMiniApp from './assets/sowminiapp.png';
 
 // Import certificate logo images from assets folder
 import ictAcademyLogo from './assets/ICT_Academy_Kerala.webp.png';
@@ -776,6 +777,14 @@ const Projects = () => {
       technologies: ['Python', 'Streamlit', 'Google Gemini', 'FAISS', 'Sentence-Transformers', 'RAG', 'LangChain'],
       github: 'https://github.com/ard3924/AI_TextBook_Assitant.git',
     },
+    {
+  title: 'SOW Mini App – Login, Terms & Pricelist',
+  description: 'A full-stack single-page web application developed as part of a Statement of Work (SOW) for Lättfaktura. The app was built to closely match a real production system specification, including JWT-based authentication, multilingual support (EN/SE) powered by PostgreSQL, a responsive UI across mobile, tablet, and desktop, and an editable pricelist with live data persistence. Deployed on Linux-based cloud infrastructure.',
+  image: sowMiniApp,
+  technologies: ['React.js (Vite)', 'Vanilla CSS', 'Node.js', 'Express.js', 'PostgreSQL (Neon)', 'JWT', 'Render'],
+  github: 'https://github.com/ard3924/Mini_app_master',
+  demo: 'https://mini-app-master.onrender.com/'
+},
     {
       title: 'Android Malware Detection System',
       description: 'A Machine Learning powered web application that classifies Android apps as benign or malicious based on permission requests. Features real-time prediction using Logistic Regression and Extra Trees classifiers.',
