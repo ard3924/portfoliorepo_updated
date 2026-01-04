@@ -17,6 +17,7 @@ import aiTextbook from './assets/AI TextBook Assistant.png';
 import malware from './assets/Malware.png';
 import foodDeli from './assets/Food Deli.png';
 import sowMiniApp from './assets/sowminiapp.png';
+import aiVoiceAssistant from './assets/aivoiceagent.png';
 
 // Import certificate logo images from assets folder
 import ictAcademyLogo from './assets/ICT_Academy_Kerala.webp.png';
@@ -785,6 +786,25 @@ const Projects = () => {
   github: 'https://github.com/ard3924/Mini_app_master',
   demo: 'https://mini-app-master.onrender.com/'
 },
+{
+  title: 'AI Voice Assistant for Restaurant Booking',
+  description: 'An AI-powered voice-over assistant that enables hands-free restaurant table bookings through natural conversation. Features intelligent dialog flow, real-time weather-based seating recommendations, and full booking management with a responsive chat interface.',
+  image: aiVoiceAssistant,
+  technologies: [
+    'React',
+    'Vite',
+    'Tailwind CSS',
+    'Web Speech API',
+    'Node.js',
+    'Express.js',
+    'MongoDB',
+    'Mongoose',
+    'JWT',
+    'OpenWeatherMap API'
+  ],
+  github: 'https://github.com/ard3924/AI_Voice_Assitant.git',
+}
+,
     {
       title: 'Android Malware Detection System',
       description: 'A Machine Learning powered web application that classifies Android apps as benign or malicious based on permission requests. Features real-time prediction using Logistic Regression and Extra Trees classifiers.',
