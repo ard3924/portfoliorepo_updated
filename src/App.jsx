@@ -34,12 +34,13 @@ import reactIcon from './assets/react.svg';
 import html5Icon from './assets/html5-original.svg';
 import css3Icon from './assets/css3-original.svg';
 import tailwindIcon from './assets/tailwindcss-original.svg';
-import framerIcon from './assets/framermotion-original.svg';
+import framerIcon from './assets/framermotion.png';
 import nodejsIcon from './assets/nodejs-original.svg';
 import expressIcon from './assets/express-original.svg';
 import pythonIcon from './assets/python-original.svg';
 import mongodbIcon from './assets/mongodb-original.svg';
 import mysqlIcon from './assets/mysql-original.svg';
+import postgresIcon from './assets/postgresql-removebg-preview.png';
 import gitIcon from './assets/git-original.svg';
 import vscodeIcon from './assets/vscode-original.svg';
 import azureIcon from './assets/azure-original.svg';
@@ -460,6 +461,7 @@ const skillIcons = {
   python: <img src={pythonIcon} alt="Python" className="w-12 h-12" />,
   mongodb: <img src={mongodbIcon} alt="MongoDB" className="w-12 h-12" />,
   sql: <img src={mysqlIcon} alt="SQL" className="w-12 h-12" />,
+  postgreSQL: <img src={postgresIcon} alt="PostgreSQL" className="w-12 h-12" />,
   git: <img src={gitIcon} alt="Git" className="w-12 h-12" />,
   vscode: <img src={vscodeIcon} alt="VS Code" className="w-12 h-12" />,
   azure: <img src={azureIcon} alt="Microsoft Azure" className="w-12 h-12" />,
@@ -499,6 +501,7 @@ const Skills = memo(() => {
         { name: 'Python', icon: skillIcons.python },
         { name: 'MongoDB', icon: skillIcons.mongodb },
         { name: 'SQL', icon: skillIcons.sql },
+        { name: 'PostgreSQL', icon: skillIcons.postgreSQL },
       ],
       color: 'green',
     },
