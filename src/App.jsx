@@ -7,7 +7,7 @@ import {
   GraduationCap, Award, Sun, Moon, Menu, X, ArrowUp, Send, Atom, FileCode,
   Palette, Wind, Move, Server, Database, DatabaseZap, Puzzle, Users,
   MessageSquare, RefreshCw, Clock, Bot, ChevronRight, Wrench, Cloud, Box,
-  PenTool
+  PenTool, HandHeart
 } from 'lucide-react';
 
 // Import project images from assets folder
@@ -49,6 +49,9 @@ import postmanIcon from './assets/getpostman-icon.svg';
 import figmaIcon from './assets/figma-original.svg';
 import awsIcon from './assets/amazonwebservices-original-wordmark.svg';
 import geminiIcon from './assets/gemini.svg';
+import renderIcon from './assets/render.jpg';
+import stitchuiIcon from './assets/stitichUI.png';
+import vercelIcon from './assets/vercel.png';
 
 // --- Theme Context ---
 const ThemeContext = createContext();
@@ -470,11 +473,15 @@ const skillIcons = {
   figma: <img src={figmaIcon} alt="Figma" className="w-12 h-12" />,
   aws: <img src={awsIcon} alt="AWS" className="w-12 h-12 dark:invert" />,
   genai: <img src={geminiIcon} alt="Generative AI" className="w-12 h-12" />,
+  render: <img src={renderIcon} alt="Render" className="w-12 h-12" />,
+  stitchui: <img src={stitchuiIcon} alt="Stitch UI" className="w-12 h-12" />,
+  vercel: <img src={vercelIcon} alt="Vercel" className="w-12 h-12" />,
   problem: <Puzzle className="w-12 h-12 text-blue-500" />,
   collaboration: <Users className="w-12 h-12 text-blue-500" />,
   communication: <MessageSquare className="w-12 h-12 text-blue-500" />,
   adaptability: <RefreshCw className="w-12 h-12 text-blue-500" />,
   time: <Clock className="w-12 h-12 text-blue-500" />,
+  volunteering: <HandHeart className="w-12 h-12 text-blue-500" />,
 };
 
 const Skills = memo(() => {
@@ -517,6 +524,9 @@ const Skills = memo(() => {
         { name: 'Figma', icon: skillIcons.figma },
         { name: 'AWS (EC2)', icon: skillIcons.aws },
         { name: 'Generative AI', icon: skillIcons.genai },
+        { name: 'Render', icon: skillIcons.render },
+        { name: 'Stitch UI', icon: skillIcons.stitchui },
+        { name : 'Vercel', icon: skillIcons.vercel },
       ],
       color: 'orange',
     },
@@ -524,13 +534,12 @@ const Skills = memo(() => {
       title: 'Soft Skills',
       icon: User,
       skills: [
-        { name: 'Problem Solving', icon: skillIcons.problem },
+        { name: 'Volunteering', icon: skillIcons.volunteering },
         { name: 'Team Collaboration', icon: skillIcons.collaboration },
         { name: 'Communication', icon: skillIcons.communication },
         { name: 'Adaptability', icon: skillIcons.adaptability },
         { name: 'Time Management', icon: skillIcons.time },
       ],
-      color: 'red',
     }
   ];
 
