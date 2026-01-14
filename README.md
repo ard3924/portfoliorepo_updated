@@ -4,7 +4,7 @@ A modern, responsive portfolio website showcasing my skills, projects, and exper
 
 ## 🚀 Live Demo
 
-[View Portfolio](https://my-portfoilio-fvajh3gqhpcnddbc.canadacentral-01.azurewebsites.net/)
+[View Portfolio](https://portfoliorepo-updated-tdjh.vercel.app/)
 
 ## 📋 Overview
 
@@ -33,6 +33,14 @@ This is a single-page application built with React that features smooth animatio
 - **SEO Friendly** - Proper meta tags and semantic HTML
 - **Accessibility** - ARIA labels and keyboard navigation
 
+## 🔄 Recent Improvements
+
+- **Enhanced SEO** - Added comprehensive meta tags, Open Graph, Twitter Cards, and JSON-LD structured data
+- **Performance Optimization** - Implemented lazy loading for project images to improve initial load times
+- **Code Quality** - Removed duplicate code and cleaned up ThemeContext implementation
+- **Search Engine Optimization** - Added robots.txt and XML sitemap for better crawling
+- **Bundle Optimization** - Cleaned up redundant CSS imports and optimized asset loading
+
 ## 📁 Project Structure
 
 ```
@@ -48,6 +56,8 @@ portfolio/
 │   └── index.css        # Global styles
 ├── Dockerfile           # Docker configuration
 ├── nginx.conf          # NGINX configuration
+├── robots.txt          # Search engine crawling instructions
+├── sitemap.xml         # XML sitemap for search engines
 ├── package.json        # Dependencies and scripts
 └── vite.config.js      # Vite configuration
 ```

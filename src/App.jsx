@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext, useContext, memo } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import { motion, useScroll, AnimatePresence } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import {
@@ -9,6 +9,7 @@ import {
   MessageSquare, RefreshCw, Clock, Bot, ChevronRight, Wrench, Cloud, Box,
   PenTool, HandHeart
 } from 'lucide-react';
+import { useTheme } from './context/ThemeContext.jsx';
 
 // Import project images from assets folder
 import localfinds from './assets/localfinds.png';
@@ -35,13 +36,17 @@ import html5Icon from './assets/html5-original.svg';
 import css3Icon from './assets/css3-original.svg';
 import tailwindIcon from './assets/tailwindcss-original.svg';
 import framerIcon from './assets/framermotion.png';
+import bootstrapIcon from './assets/bootstrap1.png';
+import materialuiIcon from './assets/mui.png';
 import nodejsIcon from './assets/nodejs-original.svg';
 import expressIcon from './assets/express-original.svg';
 import pythonIcon from './assets/python-original.svg';
 import mongodbIcon from './assets/mongodb-original.svg';
 import mysqlIcon from './assets/mysql-original.svg';
 import postgresIcon from './assets/postgresql-removebg-preview.png';
+import neonIcon from './assets/neondb1.png';
 import gitIcon from './assets/git-original.svg';
+import githubIcon from './assets/GitHub_logo.png';
 import vscodeIcon from './assets/vscode-original.svg';
 import azureIcon from './assets/azure-original.svg';
 import dockerIcon from './assets/docker-original.svg';
@@ -52,46 +57,6 @@ import geminiIcon from './assets/gemini.svg';
 import renderIcon from './assets/render.jpg';
 import stitchuiIcon from './assets/stitichUI.png';
 import vercelIcon from './assets/vercel.png';
-
-// --- Theme Context ---
-const ThemeContext = createContext();
-
-export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState('light');
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      setTheme(savedTheme);
-    } else {
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      setTheme(prefersDark ? 'dark' : 'light');
-    }
-  }, []);
-
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', theme === 'dark');
-    localStorage.setItem('theme', theme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
-  };
-
-  return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
-};
-
-export const useTheme = () => {
-  const context = useContext(ThemeContext);
-  if (!context) {
-    throw new Error('useTheme must be used within a ThemeProvider');
-  }
-  return context;
-};
 
 // --- Animation Variants (Reusable) ---
 const fadeInUp = {
@@ -465,6 +430,7 @@ const skillIcons = {
   mongodb: <img src={mongodbIcon} alt="MongoDB" className="w-12 h-12" />,
   sql: <img src={mysqlIcon} alt="SQL" className="w-12 h-12" />,
   postgreSQL: <img src={postgresIcon} alt="PostgreSQL" className="w-12 h-12" />,
+  neon: <img src={neonIcon} alt="Neon DB" className="w-12 h-12" />,
   git: <img src={gitIcon} alt="Git" className="w-12 h-12" />,
   vscode: <img src={vscodeIcon} alt="VS Code" className="w-12 h-12" />,
   azure: <img src={azureIcon} alt="Microsoft Azure" className="w-12 h-12" />,
@@ -473,6 +439,7 @@ const skillIcons = {
   figma: <img src={figmaIcon} alt="Figma" className="w-12 h-12" />,
   aws: <img src={awsIcon} alt="AWS" className="w-12 h-12 dark:invert" />,
   genai: <img src={geminiIcon} alt="Generative AI" className="w-12 h-12" />,
+  github: <img src={githubIcon} alt="GitHub" className="w-12 h-12" />,
   render: <img src={renderIcon} alt="Render" className="w-12 h-12" />,
   stitchui: <img src={stitchuiIcon} alt="Stitch UI" className="w-12 h-12" />,
   vercel: <img src={vercelIcon} alt="Vercel" className="w-12 h-12" />,
@@ -482,6 +449,8 @@ const skillIcons = {
   adaptability: <RefreshCw className="w-12 h-12 text-blue-500" />,
   time: <Clock className="w-12 h-12 text-blue-500" />,
   volunteering: <HandHeart className="w-12 h-12 text-blue-500" />,
+  bootstrap: <img src={bootstrapIcon} alt="Bootstrap" className="w-12 h-12" />,
+  materialui: <img src={materialuiIcon} alt="Material UI" className="w-12 h-12" />,
 };
 
 const Skills = memo(() => {
@@ -496,6 +465,8 @@ const Skills = memo(() => {
         { name: 'CSS3', icon: skillIcons.css3 },
         { name: 'Tailwind CSS', icon: skillIcons.tailwind },
         { name: 'Framer Motion', icon: skillIcons.framer },
+        { name: 'Bootstrap', icon: skillIcons.bootstrap },
+        { name: 'Material UI', icon: skillIcons.materialui },
       ],
       color: 'blue',
     },
@@ -509,6 +480,7 @@ const Skills = memo(() => {
         { name: 'MongoDB', icon: skillIcons.mongodb },
         { name: 'SQL', icon: skillIcons.sql },
         { name: 'PostgreSQL', icon: skillIcons.postgreSQL },
+        { name: 'Neon DB', icon: skillIcons.neon },
       ],
       color: 'green',
     },
@@ -516,7 +488,8 @@ const Skills = memo(() => {
       title: 'Tools',
       icon: Wrench,
       skills: [
-        { name: 'Git & GitHub', icon: skillIcons.git },
+        { name: 'Git', icon: skillIcons.git },
+        { name: 'GitHub', icon: skillIcons.github },
         { name: 'VS Code', icon: skillIcons.vscode },
         { name: 'Microsoft Azure', icon: skillIcons.azure },
         { name: 'Docker', icon: skillIcons.docker },
@@ -712,7 +685,7 @@ const ProjectCard = ({ project }) => {
   return (
     <div className="group bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl dark:shadow-gray-700/50 transition-all duration-300 overflow-hidden flex flex-col h-full">
       <div className="overflow-hidden">
-        <img src={project.image} alt={project.title} className="w-full h-64 md:h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+        <img src={project.image} alt={project.title} loading="lazy" className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" />
       </div>
       <div className="p-6 flex flex-col flex-grow">
         <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">{project.title}</h3>
@@ -759,12 +732,6 @@ const ProjectCard = ({ project }) => {
 };
 
 const Projects = () => {
-  const carouselRef = React.useRef(null);
-  const [width, setWidth] = React.useState(0);
-
-  React.useEffect(() => {
-    setWidth(carouselRef.current.scrollWidth - carouselRef.current.offsetWidth);
-  }, []);
 
   const projects = [
     {
@@ -792,7 +759,7 @@ const Projects = () => {
     },
     {
   title: 'SOW Mini App – Login, Terms & Pricelist',
-  description: 'A full-stack single-page web application developed as part of a Statement of Work (SOW) for Lättfaktura. The app was built to closely match a real production system specification, including JWT-based authentication, multilingual support (EN/SE) powered by PostgreSQL, a responsive UI across mobile, tablet, and desktop, and an editable pricelist with live data persistence. Deployed on Linux-based cloud infrastructure.',
+  description: 'A full-stack single-page web application developed as part of a Statement of Work (SOW) for Lättfaktura. The app was built to closely match a real production system specification, including JWT-based authentication, multilingual support (EN/SE) powered by PostgreSQL, a responsive UI across mobile, tablet, and desktop, and an editable pricelist with live data persistence. Deployed on Linux-based cloud infrastructure but do to free-tier limitations switched the backend to render and frontend to vercel.',
   image: sowMiniApp,
   technologies: ['React.js (Vite)', 'Vanilla CSS', 'Node.js', 'Express.js', 'PostgreSQL (Neon)', 'JWT', 'Render'],
   github: 'https://github.com/ard3924/Mini_app_master',
@@ -854,25 +821,15 @@ const Projects = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8"></div>
         </motion.div>
         <motion.div
-          ref={carouselRef}
-          className="cursor-grab overflow-hidden"
-          whileTap={{ cursor: "grabbing" }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          variants={staggerContainer}
         >
-          <motion.div
-            drag="x"
-            dragConstraints={{ right: 0, left: -width }}
-            className="flex space-x-8 p-4"
-          >
-            {projects.map((project, index) => (
-              <motion.div key={index} className="min-w-[90%] md:min-w-[60%] lg:min-w-[50%]">
-                <ProjectCard project={project} />
-              </motion.div>
-            ))}
-          </motion.div>
+          {projects.map((project, index) => (
+            <motion.div key={index} variants={fadeInUp}>
+              <ProjectCard project={project} />
+            </motion.div>
+          ))}
         </motion.div>
-        <div className="text-center mt-8 text-gray-500 dark:text-gray-400">
-          <p>Drag to scroll through projects</p>
-        </div>
       </div>
     </motion.section>
   );
@@ -1263,20 +1220,18 @@ const ThemeToggle = () => {
 
 const App = () => {
   return (
-    <ThemeProvider>
-      <div className="bg-white dark:bg-gray-900 min-h-screen text-gray-800 dark:text-gray-100 transition-colors duration-300">
-        <Navbar />
-        <Hero />
-        <About />
-        <Skills />
-        <Experience />
-        <Projects />
-        <Education />
-        <Certifications />
-        <Contact />
-        <BackToTopButton />
-      </div>
-    </ThemeProvider>
+    <div className="bg-white dark:bg-gray-900 min-h-screen text-gray-800 dark:text-gray-100 transition-colors duration-300">
+      <Navbar />
+      <Hero />
+      <About />
+      <Skills />
+      <Experience />
+      <Projects />
+      <Education />
+      <Certifications />
+      <Contact />
+      <BackToTopButton />
+    </div>
   );
 };
 
