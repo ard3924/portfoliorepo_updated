@@ -735,24 +735,35 @@ const Projects = () => {
 
   const projects = [
     {
-      title: 'Local Marketplace Web Application',
-      description: 'A full-stack web application built with MERN Stack to connect local buyers and sellers. Features responsive UI with React and Tailwind CSS, backend integration, and deployed on Microsoft Azure.',
-      image: localfinds,
-      technologies: ['React.js', 'Node.js', 'MongoDB', 'Express.js', 'Tailwind CSS', 'Azure'],
+     title: 'LocalFinds – Local Marketplace Platform',
+  description: 'LocalFinds is a full-stack e-commerce marketplace platform designed to connect local buyers and sellers within the same community. The application supports multi-role authentication (buyers, sellers, and admins), real-time chat and notifications using Socket.io, secure JWT-based authentication with OTP-driven password recovery, and a complete order lifecycle with invoice generation. Sellers are provided with dashboards for product, order, and business management, while admins can moderate users, products, and platform activity. The platform is built with scalability, security, and real-world marketplace workflows in mind.',
+  image: localfinds,
+  technologies: [
+    'React',
+    'Tailwind CSS',
+    'Node.js',
+    'Express.js',
+    'MongoDB',
+    'Azure',
+    'Socket.io',
+    'JWT',
+    'Cloudinary',
+    'PDFKit'
+  ],
       github: 'https://github.com/ard3924/localfinds.git',
       demo: 'https://localfinds-two.vercel.app/'
     },
     {
       title: 'Ignite - Freelance Collaboration Platform',
-      description: 'A full-stack project management platform connecting clients with freelance developers for group-based collaborations. Features role-based authentication, task tracking, and cloud-based media management.',
+  description: 'Ignite is a full-stack MERN web application designed to connect clients with freelance developers for group-based projects. The platform supports role-based authentication, project posting, applicant management, task tracking, and a complete work submission and review workflow. It features secure JWT-based authentication, RESTful APIs, cloud-based media handling with Cloudinary, and a responsive, interactive React frontend. Built with scalability and real-world collaboration workflows in mind.',
       image: ignite,
       technologies: ['React', 'Node.js', 'MongoDB', 'Express', 'Tailwind CSS', 'Cloudinary', 'Framer Motion', 'Azure'],
       github: 'https://github.com/ard3924/Ignite.git',
       demo: 'https://ignite-woad.vercel.app/home'
     },
     {
-      title: 'AI Textbook Assistant',
-      description: 'A sophisticated RAG application transforming PDF textbooks into interactive AI assistants. Features context-aware answers, strict page-level citations, and external web search fallback using Google Gemini 2.5 Pro.',
+      title: 'AI Textbook Assistant – RAG-Based Academic Q&A System',
+      description: 'AI Textbook Assistant is a Retrieval-Augmented Generation (RAG) application that transforms any PDF textbook into an interactive academic assistant. The system enables users to ask complex, textbook-specific questions and receive detailed, context-aware answers strictly grounded in the source material, complete with page-level citations. It leverages a local Sentence-Transformer model for cost-free embeddings, a FAISS vector store for efficient retrieval, and Google Gemini 2.5 Pro for high-quality generation. The application also supports proactive follow-up questions, configurable retrieval parameters, and optional external web search when textbook knowledge is insufficient.',
       image: aiTextbook,
       technologies: ['Python', 'Streamlit', 'Google Gemini', 'FAISS', 'Sentence-Transformers', 'RAG', 'LangChain'],
       github: 'https://github.com/ard3924/AI_TextBook_Assitant.git',
@@ -766,8 +777,8 @@ const Projects = () => {
   demo: 'https://mini-app-master.onrender.com/'
 },
 {
-  title: 'AI Voice Assistant for Restaurant Booking',
-  description: 'An AI-powered voice-over assistant that enables hands-free restaurant table bookings through natural conversation. Features intelligent dialog flow, real-time weather-based seating recommendations, and full booking management with a responsive chat interface.',
+ title: 'Vaiu AI – Voice-Based Restaurant Booking Assistant',
+  description: 'Vaiu AI is an intelligent voice-driven restaurant booking assistant that enables hands-free table reservations through natural conversation. The system uses browser-based speech recognition and synthesis to guide users through a structured booking flow, collecting preferences, special requests, and confirmation details. It integrates real-time weather data to recommend indoor or outdoor seating, supports full CRUD booking management, and maintains conversational session state for a smooth user experience. Built with a modern React frontend and a Node.js backend, Vaiu AI demonstrates applied conversational AI, API integration, and real-world booking workflows.',
   image: aiVoiceAssistant,
   technologies: [
     'React',
@@ -785,8 +796,8 @@ const Projects = () => {
 }
 ,
     {
-      title: 'Android Malware Detection System',
-      description: 'A Machine Learning powered web application that classifies Android apps as benign or malicious based on permission requests. Features real-time prediction using Logistic Regression and Extra Trees classifiers.',
+      title: 'Android Malware Detection – Permission-Based ML Classifier',
+  description: 'A web-based machine learning application that detects whether an Android application is malicious or benign based on the permissions it requests. The system uses pre-trained classification models, including Logistic Regression and Extra Trees Classifier, to provide real-time predictions through an intuitive Flask-based interface. Users can manually select permissions to simulate application behavior, visualize prediction outcomes, compare model performance, and export results as downloadable PDF reports. The project demonstrates applied machine learning for cybersecurity use cases with a focus on interpretability and usability.',
       image: malware,
       technologies: ['Python', 'Flask', 'Scikit-learn', 'Pandas', 'Bootstrap', 'Google Charts'],
       github: 'https://github.com/ard3924/Major_Project.git', // Update with actual link
@@ -794,7 +805,7 @@ const Projects = () => {
     },
     {
       title: 'FoodDeli - Restaurant Delivery App',
-      description: 'A full-stack food ordering platform featuring a dynamic menu system, real-time cart management with Redux, and secure payment processing. Includes a dedicated admin panel for order tracking and inventory management.',
+  description: 'A full-stack food delivery application that enables users to browse food items, manage carts, place orders, and complete secure payments using Stripe. The platform includes a customer-facing frontend, a dedicated admin panel for managing food items and orders, and a robust backend API with JWT-based authentication. Built with a scalable MERN architecture, the app supports image uploads, order history tracking, and responsive design for seamless use across devices.',
       image: foodDeli,
       technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Redux Toolkit', 'Stripe', 'Tailwind CSS'],
       github: 'https://github.com/ard3924/Minor_Project.git', // Update with actual link
