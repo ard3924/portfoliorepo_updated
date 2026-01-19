@@ -748,7 +748,7 @@ const Projects = () => {
       image: ignite,
       technologies: ['React', 'Node.js', 'MongoDB', 'Express', 'Tailwind CSS', 'Cloudinary', 'Framer Motion', 'Azure'],
       github: 'https://github.com/ard3924/Ignite.git',
-      demo: 'https://ignite-fuelyourpassion-b6gjaneubzcyh6h0.canadacentral-01.azurewebsites.net/home'
+      demo: 'https://ignite-woad.vercel.app/home'
     },
     {
       title: 'AI Textbook Assistant',
