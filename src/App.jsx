@@ -53,10 +53,10 @@ import dockerIcon from './assets/docker-original.svg';
 import postmanIcon from './assets/getpostman-icon.svg';
 import figmaIcon from './assets/figma-original.svg';
 import awsIcon from './assets/amazonwebservices-original-wordmark.svg';
-import geminiIcon from './assets/gemini.svg';
 import renderIcon from './assets/render.jpg';
 import stitchuiIcon from './assets/stitichUI.png';
 import vercelIcon from './assets/vercel.png';
+import geminilogo from './assets/gemini.jpeg';
 
 // --- Animation Variants (Reusable) ---
 const fadeInUp = {
@@ -438,7 +438,7 @@ const skillIcons = {
   postman: <img src={postmanIcon} alt="Postman" className="w-12 h-12" />,
   figma: <img src={figmaIcon} alt="Figma" className="w-12 h-12" />,
   aws: <img src={awsIcon} alt="AWS" className="w-12 h-12 dark:invert" />,
-  genai: <img src={geminiIcon} alt="Generative AI" className="w-12 h-12" />,
+  genai: <img src={geminilogo} alt="Generative AI" className="w-12 h-12" />,
   github: <img src={githubIcon} alt="GitHub" className="w-12 h-12" />,
   render: <img src={renderIcon} alt="Render" className="w-12 h-12" />,
   stitchui: <img src={stitchuiIcon} alt="Stitch UI" className="w-12 h-12" />,
