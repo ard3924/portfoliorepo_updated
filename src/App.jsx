@@ -56,7 +56,9 @@ import awsIcon from './assets/amazonwebservices-original-wordmark.svg';
 import renderIcon from './assets/render.jpg';
 import stitchuiIcon from './assets/stitichUI.png';
 import vercelIcon from './assets/vercel.png';
-import geminilogo from './assets/gemini.jpeg';
+import geminilogo from './assets/gemini-removebg-preview.png';
+import cursorlogo from './assets/cursorlogo-removebg-preview.png';
+import antigravitylogo from './assets/antigravity.png';
 
 // --- Animation Variants (Reusable) ---
 const fadeInUp = {
@@ -449,8 +451,10 @@ const skillIcons = {
   adaptability: <RefreshCw className="w-12 h-12 text-blue-500" />,
   time: <Clock className="w-12 h-12 text-blue-500" />,
   volunteering: <HandHeart className="w-12 h-12 text-blue-500" />,
-  bootstrap: <img src={bootstrapIcon} alt="Bootstrap" className="w-12 h-12" />,
+  bootstrap: <img src={bootstrapIcon} alt="Bootstrap" className="w-12 h-15" />,
   materialui: <img src={materialuiIcon} alt="Material UI" className="w-12 h-12" />,
+  curor: <img src={cursorlogo} alt="Cursor AI" className="w-15 h-12" />,
+  antigravity: <img src={antigravitylogo} alt="AntiGravity AI" className="w-12 h-12" />,
 };
 
 const Skills = memo(() => {
@@ -495,11 +499,14 @@ const Skills = memo(() => {
         { name: 'Docker', icon: skillIcons.docker },
         { name: 'Postman', icon: skillIcons.postman },
         { name: 'Figma', icon: skillIcons.figma },
+        { name: 'Cursor AI', icon: skillIcons.curor },
         { name: 'AWS (EC2)', icon: skillIcons.aws },
         { name: 'Generative AI', icon: skillIcons.genai },
         { name: 'Render', icon: skillIcons.render },
         { name: 'Stitch UI', icon: skillIcons.stitchui },
-        { name : 'Vercel', icon: skillIcons.vercel },
+        { name: 'Vercel', icon: skillIcons.vercel },
+        { name: 'AntiGravity AI', icon: skillIcons.antigravity },
+
       ],
       color: 'orange',
     },
