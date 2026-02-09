@@ -5,4 +5,6 @@
 /* Smooth scrolling */
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Account for fixed navbar height */
+    overscroll-behavior: none; /* Prevent bounce on mobile */
 }

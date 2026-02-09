@@ -362,9 +362,7 @@ const About = memo(() => {
             variants={fadeInUp}
           >
             <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed text-center">
-              Dedicated Computer Science student with a strong foundation in <span className="font-semibold text-blue-600">Full Stack Development</span> and practical experience
-              in <span className="font-semibold text-purple-600">Generative AI</span>. Eager to apply technical and collaborative skills to solve complex problems in a dynamic
-              environment.
+              Innovative Computer Science graduate passionate about crafting digital experiences that matter. Specializing in <span className="font-semibold text-blue-600">Full Stack Development</span> and <span className="font-semibold text-purple-600">Generative AI</span>, I build scalable solutions from local marketplaces to intelligent assistants. Driven by curiosity and collaboration, I thrive on turning complex challenges into elegant, user-centric innovations.
             </p>
           </motion.div>
 
