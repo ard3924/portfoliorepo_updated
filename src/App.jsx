@@ -371,7 +371,7 @@ const About = memo(() => {
             variants={fadeInUp}
           >
             <a
-              href="/Aravind_R_Resume.pdf"
+              href="/autoCV__1_ (22).pdf"
               download
               className="inline-flex items-center bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
             >
