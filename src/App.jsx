@@ -22,6 +22,7 @@ import aiVoiceAssistant from './assets/aivoiceagent.png';
 
 // Import certificate logo images from assets folder
 import ictAcademyLogo from './assets/ICT_Academy_Kerala.webp.png';
+import universityLogo from './assets/uok.png';
 import dockerLogo from './assets/docker-logo.png';
 import linkedinLogo from './assets/LinkedIn_logo_initials.png.webp';
 import unstopLogo from './assets/unstop-icon-800x800.png';
@@ -451,11 +452,22 @@ const skillIcons = {
   volunteering: <HandHeart className="w-12 h-12 text-blue-500" />,
   bootstrap: <img src={bootstrapIcon} alt="Bootstrap" className="w-12 h-15" />,
   materialui: <img src={materialuiIcon} alt="Material UI" className="w-12 h-12" />,
-  curor: <img src={cursorlogo} alt="Cursor AI" className="w-15 h-12" />,
+  cursor: <img src={cursorlogo} alt="Cursor AI" className="w-15 h-12" />,
   antigravity: <img src={antigravitylogo} alt="AntiGravity AI" className="w-12 h-12" />,
 };
 
 const Skills = memo(() => {
+  const getCategoryGradient = (color) => {
+    const gradients = {
+      blue: 'from-blue-600 to-indigo-600',
+      green: 'from-emerald-600 to-teal-600',
+      cyan: 'from-cyan-600 to-blue-600',
+      orange: 'from-orange-500 to-red-600',
+      pink: 'from-pink-500 to-rose-600',
+    };
+    return gradients[color] || 'from-blue-600 to-purple-600';
+  };
+
   const skillCategories = [
     {
       title: 'Frontend',
@@ -474,7 +486,7 @@ const Skills = memo(() => {
     },
     {
       title: 'Backend',
-      icon: Briefcase,
+      icon: Server,
       skills: [
         { name: 'Node.js', icon: skillIcons.nodejs },
         { name: 'Express.js', icon: skillIcons.express },
@@ -487,24 +499,30 @@ const Skills = memo(() => {
       color: 'green',
     },
     {
-      title: 'Tools',
-      icon: Wrench,
+      title: 'Cloud & DevOps',
+      icon: Cloud,
+      skills: [
+        { name: 'Microsoft Azure', icon: skillIcons.azure },
+        { name: 'Docker', icon: skillIcons.docker },
+        { name: 'AWS (EC2)', icon: skillIcons.aws },
+        { name: 'Render', icon: skillIcons.render },
+        { name: 'Vercel', icon: skillIcons.vercel },
+      ],
+      color: 'cyan',
+    },
+    {
+      title: 'Tools & AI',
+      icon: Bot,
       skills: [
         { name: 'Git', icon: skillIcons.git },
         { name: 'GitHub', icon: skillIcons.github },
         { name: 'VS Code', icon: skillIcons.vscode },
-        { name: 'Microsoft Azure', icon: skillIcons.azure },
-        { name: 'Docker', icon: skillIcons.docker },
         { name: 'Postman', icon: skillIcons.postman },
         { name: 'Figma', icon: skillIcons.figma },
-        { name: 'Cursor AI', icon: skillIcons.curor },
-        { name: 'AWS (EC2)', icon: skillIcons.aws },
+        { name: 'Cursor AI', icon: skillIcons.cursor },
         { name: 'Generative AI', icon: skillIcons.genai },
-        { name: 'Render', icon: skillIcons.render },
-        { name: 'Stitch UI', icon: skillIcons.stitchui },
-        { name: 'Vercel', icon: skillIcons.vercel },
         { name: 'AntiGravity AI', icon: skillIcons.antigravity },
-
+        { name: 'Stitch UI', icon: skillIcons.stitchui },
       ],
       color: 'orange',
     },
@@ -518,6 +536,7 @@ const Skills = memo(() => {
         { name: 'Adaptability', icon: skillIcons.adaptability },
         { name: 'Time Management', icon: skillIcons.time },
       ],
+      color: 'pink',
     }
   ];
 
@@ -525,13 +544,15 @@ const Skills = memo(() => {
     <motion.section
       id="skills"
       className="py-20 bg-gray-50 dark:bg-gray-900"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: '-100px' }}
-      style={{ willChange: 'transform, opacity' }}
     >
       <div className="container mx-auto px-6">
-        <motion.div className="text-center mb-16" variants={fadeInUp}>
+        <motion.div 
+          className="text-center mb-16" 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+        >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-gray-100 mb-6">
             My <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Skills</span>
           </h2>
@@ -542,10 +563,13 @@ const Skills = memo(() => {
           {skillCategories.map((category, index) => (
             <motion.div
               key={index}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
               variants={fadeInUp}
             >
               <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center mr-4 shadow-md">
+                <div className={`w-12 h-12 bg-gradient-to-r ${getCategoryGradient(category.color)} rounded-xl flex items-center justify-center mr-4 shadow-md`}>
                   <category.icon className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100">{category.title}</h3>
@@ -566,6 +590,20 @@ const Skills = memo(() => {
 const Experience = () => {
   const experiences = [
     {
+      title: 'Associate Software Engineer (Incoming)',
+      company: 'EY Global Delivery Services (EY GDS)',
+      location: 'Trivandrum, Kerala',
+      period: 'Feb 2026 – Present',
+      type: 'Full-time',
+      achievements: [
+        {
+          title: 'Enterprise Solution Delivery',
+          description: 'Selected to join the technology consulting practice to engineer scalable enterprise solutions. Will focus on full-cycle software development, leveraging modern frameworks to drive digital transformation for global clients.',
+          tech: ['Enterprise Architecture', 'Full Stack Development', 'Agile Methodologies']
+        }
+      ]
+    },
+    {
       title: 'Project Intern',
       company: 'Track Genesis',
       location: 'Trivandrum, Kerala',
@@ -573,19 +611,19 @@ const Experience = () => {
       type: 'Internship',
       achievements: [
         {
-          title: 'Full-Stack Development',
-          description: 'Developed a Local Marketplace web application using MERN Stack to connect local buyers and sellers',
+          title: 'Full-Stack Application Development',
+          description: 'Architected and built a robust Local Marketplace platform using the MERN stack. Engineered secure RESTful APIs and real-time features to facilitate seamless transactions between local buyers and sellers.',
           tech: ['React.js', 'Node.js', 'MongoDB', 'Express.js']
         },
         {
-          title: 'UI/UX Excellence',
-          description: 'Created responsive, high-performance user interfaces ensuring seamless experience across all devices',
-          tech: ['Tailwind CSS', 'Responsive Design']
+          title: 'Frontend Engineering & UX Design',
+          description: 'Developed a high-performance, responsive user interface using Tailwind CSS. Implemented reusable components and optimized rendering paths to ensure a consistent and engaging experience across all devices.',
+          tech: ['Tailwind CSS', 'Responsive Design', 'UI/UX']
         },
         {
-          title: 'Cloud Deployment',
-          description: 'Collaborated on backend integration and deployed application on Microsoft Azure for scalable hosting',
-          tech: ['Azure', 'Cloud Computing']
+          title: 'Cloud Infrastructure & Deployment',
+          description: 'Orchestrated the deployment of backend services on Microsoft Azure. Configured scalable cloud resources and managed integration pipelines to ensure high availability and reliability of the application.',
+          tech: ['Azure', 'Cloud Computing', 'CI/CD']
         }
       ]
     }
@@ -597,7 +635,7 @@ const Experience = () => {
       className="py-20 bg-white dark:bg-gray-900"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true }}
+      viewport={{ once: true, margin: "-100px" }}
     >
       <div className="container mx-auto px-6">
         <motion.div
@@ -605,78 +643,59 @@ const Experience = () => {
           variants={fadeInUp}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-gray-100 mb-6">
-            Work <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent dark:from-blue-500 dark:to-purple-500">Experience</span>
+            Work <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Experience</span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8"></div>
         </motion.div>
 
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-4xl mx-auto space-y-8">
           {experiences.map((exp, index) => (
             <motion.div
               key={index}
-              className="bg-white/90 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl dark:shadow-gray-700/50 overflow-hidden mb-8"
+              className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl border border-gray-100 dark:border-gray-700 transition-all duration-300"
               variants={fadeInUp}
+              whileHover={{ y: -5 }}
             >
-              {/* Header */}
-              <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-6 text-white">
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-                  <div className="flex items-center mb-4 md:mb-0">
-                    <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mr-4">
-                      <Briefcase className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-bold">{exp.title}</h3>
-                      <p className="text-blue-100 text-lg">{exp.company}</p>
-                    </div>
+              <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-6">
+                <div className="flex items-start">
+                  <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white shadow-lg mr-5 flex-shrink-0">
+                    <Briefcase className="w-7 h-7" />
                   </div>
-                  <div className="flex flex-col space-y-2">
-                    <div className="flex items-center text-blue-100">
-                      <MapPin className="w-4 h-4 mr-2" />
-                      <span>{exp.location}</span>
-                    </div>
-                    <div className="flex items-center text-blue-100">
-                      <Calendar className="w-4 h-4 mr-2" />
-                      <span>{exp.period}</span>
-                    </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100">{exp.title}</h3>
+                    <h4 className="text-lg font-semibold text-blue-600 dark:text-blue-400 mt-1">{exp.company}</h4>
                   </div>
+                </div>
+                
+                <div className="mt-4 md:mt-0 flex flex-col md:items-end space-y-2">
+                   <span className="inline-flex items-center px-3 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-sm font-medium rounded-full">
+                      {exp.type}
+                   </span>
+                   <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm">
+                      <Calendar className="w-4 h-4 mr-1.5" />
+                      {exp.period}
+                   </div>
+                   <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm">
+                      <MapPin className="w-4 h-4 mr-1.5" />
+                      {exp.location}
+                   </div>
                 </div>
               </div>
 
-              {/* Achievements */}
-              <div className="p-6">
-                <motion.div
-                  className="grid md:grid-cols-1 lg:grid-cols-3 gap-6"
-                  variants={staggerContainer}
-                  initial="hidden"
-                  whileInView="visible"
-                >
-                  {exp.achievements.map((achievement, achIndex) => (
-                    <motion.div
-                      key={achIndex}
-                      className="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-4 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300"
-                      variants={fadeInUp}
-                      whileHover={{ scale: 1.02 }}
-                    >
-                      <div className="flex items-start">
-                        <ChevronRight className="w-5 h-5 text-blue-600 mt-1 mr-3 flex-shrink-0" />
-                        <div>
-                          <h4 className="font-semibold text-gray-800 dark:text-gray-100 mb-2">{achievement.title}</h4>
-                          <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">{achievement.description}</p>
-                          <div className="flex flex-wrap gap-1">
-                            {achievement.tech.map((tech, techIndex) => (
-                              <span
-                                key={techIndex}
-                                className="bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300 px-2 py-1 rounded text-xs font-medium"
-                              >
-                                {tech}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </motion.div>
+              <div className="space-y-4">
+                {exp.achievements.map((achievement, achIndex) => (
+                  <div key={achIndex} className="bg-gray-50 dark:bg-gray-700/30 rounded-xl p-5 border-l-4 border-blue-500 dark:border-blue-600 hover:bg-gray-100 dark:hover:bg-gray-700/50 transition-colors">
+                    <h5 className="font-bold text-gray-800 dark:text-gray-200 mb-2">{achievement.title}</h5>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm mb-3 leading-relaxed">{achievement.description}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {achievement.tech.map((tech, tIndex) => (
+                        <span key={tIndex} className="px-2.5 py-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-300 text-xs font-medium rounded-md">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
               </div>
             </motion.div>
           ))}
@@ -856,41 +875,70 @@ const Education = () => {
     {
       institution: 'ICT Academy of Kerala',
       degree: 'Industry Readiness Program in Full Stack Development (MERN)',
-      period: 'June 2025 – Oct 2025'
+      period: 'June 2025 – Oct 2025',
+      description: 'Intensive training program focusing on modern web development technologies including MongoDB, Express.js, React, and Node.js.',
+      logo: ictAcademyLogo
     },
     {
       institution: 'University Of Kerala',
       degree: 'Bachelor of Computer Science',
-      period: 'Sept 2022 – May 2025'
+      period: 'Sept 2022 – May 2025',
+      description: 'Core computer science curriculum covering algorithms, data structures, software engineering, and database management.',
+      logo: universityLogo
     }
   ];
 
   return (
     <motion.section
       id="education"
-      className="py-20 bg-white dark:bg-gray-900"
+      className="py-20 bg-gray-50 dark:bg-gray-900"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true }}
+      viewport={{ once: true, margin: "-100px" }}
     >
       <div className="container mx-auto px-6">
-        <h2 className="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-gray-100">Education</h2>
         <motion.div
-          className="max-w-4xl mx-auto"
+          className="text-center mb-16"
+          variants={fadeInUp}
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-gray-100 mb-6">
+            My <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Education</span>
+          </h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto"></div>
+        </motion.div>
+
+        <motion.div
+          className="max-w-4xl mx-auto grid gap-8"
           variants={staggerContainer}
         >
           {education.map((edu, index) => (
             <motion.div
               key={index}
-              className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md dark:shadow-gray-700/50 mb-6"
+              className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl border border-gray-100 dark:border-gray-700 transition-all duration-300"
               variants={fadeInUp}
+              whileHover={{ y: -5 }}
             >
-              <div className="flex items-center mb-4">
-                <GraduationCap className="w-6 h-6 text-blue-600 mr-3" />
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100">{edu.degree}</h3>
-                  <p className="text-gray-600 dark:text-gray-300">{edu.institution}</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">{edu.period}</p>
+              <div className="flex flex-col md:flex-row md:items-start gap-6">
+                <div className="flex-shrink-0">
+                  <div className="w-16 h-16 flex items-center justify-center transition-transform duration-300">
+                    <img src={edu.logo} alt={edu.institution} className={`w-full h-full object-contain ${(edu.institution.includes('ICT') || edu.institution.includes('University')) ? '' : 'rounded-2xl'}`} />
+                  </div>
+                </div>
+                
+                <div className="flex-grow">
+                  <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
+                    <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100">{edu.degree}</h3>
+                    <span className="inline-flex items-center px-3 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 text-sm font-medium rounded-full mt-2 md:mt-0 w-fit">
+                      <Calendar className="w-4 h-4 mr-1.5" />
+                      {edu.period}
+                    </span>
+                  </div>
+                  
+                  <h4 className="text-lg font-semibold text-blue-600 dark:text-blue-400 mb-4">{edu.institution}</h4>
+                  
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    {edu.description}
+                  </p>
                 </div>
               </div>
             </motion.div>
@@ -908,7 +956,7 @@ const Certifications = () => {
       issuer: 'ICT Academy of Kerala',
       date: '2025',
       description: 'Intensive program covering MongoDB, Express.js, React, and Node.js for modern web development.',
-      logo: <img src={ictAcademyLogo} alt="ICT Academy Kerala" className="w-8 h-8 object-contain" />,
+      logo: <img src={ictAcademyLogo} alt="ICT Academy Kerala" className="w-full h-full object-contain" />,
       link: 'https://drive.google.com/file/d/1hr2cpLptC2Q2hEQMrx8AQls5iGQaIqqy/view?usp=drive_link'
     },
     {
@@ -917,7 +965,7 @@ const Certifications = () => {
       date: "2025",
       description:
         "Mastered containerization concepts including Docker images, containers, volumes, and essential DevOps workflows.",
-      logo: <img src={dockerLogo} alt="Docker" className="w-8 h-8 object-contain" />,
+      logo: <img src={dockerLogo} alt="Docker" className="w-full h-full object-contain rounded-2xl" />,
       link: 'https://www.linkedin.com/learning/certificates/24f289a97f4c4eff898934f9e5a88c47c6fc6c8cd135e04c266e0c5f78d9d582?trk=share_certificate'
     },
     {
@@ -926,7 +974,7 @@ const Certifications = () => {
       date: "2025",
       description:
         "Covered core React fundamentals including components, hooks, state management, props, and building dynamic UI.",
-      logo: <img src={linkedinLogo} alt="LinkedIn Learning" className="w-8 h-8 object-contain" />,
+      logo: <img src={linkedinLogo} alt="LinkedIn Learning" className="w-full h-full object-contain rounded-2xl" />,
       link: 'https://www.linkedin.com/learning/certificates/b42c273722cd6facf79b895bab4aefd085e82f0c0e1874a6dcb36388a866b8ef'
     },
     {
@@ -935,7 +983,7 @@ const Certifications = () => {
       date: "2025",
       description:
         "Built a complete full-stack web application and deployed it using modern hosting workflows and best practices.",
-      logo: <img src={linkedinLogo} alt="LinkedIn Learning" className="w-8 h-8 object-contain" />,
+      logo: <img src={linkedinLogo} alt="LinkedIn Learning" className="w-full h-full object-contain rounded-2xl" />,
       link: 'https://www.linkedin.com/learning/certificates/7d79af4723688cb485242933ec61d9c673a43185211bdc9089138a417a4b9a78'
     },
     {
@@ -944,7 +992,7 @@ const Certifications = () => {
       date: "2025",
       description:
         "Gained hands-on experience building server-side applications with Node.js, Express, routing, and API development.",
-      logo: <img src={unstopLogo} alt="Unstop" className="w-8 h-8 object-contain" />,
+      logo: <img src={unstopLogo} alt="Unstop" className="w-full h-full object-contain rounded-2xl" />,
       link: 'https://unstop.com/certificate-preview/13835c57-1d7f-43d5-a5a2-04e490818681'
     },
     {
@@ -953,7 +1001,7 @@ const Certifications = () => {
       date: "2025",
       description:
         "Gained foundational knowledge in generative AI, prompt engineering, machine learning basics, and AI productivity tools.",
-      logo: <img src={microsoftLogo} alt="Microsoft" className="w-8 h-8 object-contain" />,
+      logo: <img src={microsoftLogo} alt="Microsoft" className="w-full h-full object-contain rounded-2xl" />,
       link: 'https://www.linkedin.com/learning/certificates/abeef268d93d43214b2e097f8446ff6ebdd553006fd9b3c24a9b796d22f3f97d'
     },
     {
@@ -962,7 +1010,7 @@ const Certifications = () => {
       date: "2025",
       description:
         "Learned Agile workflows, sprint planning, issue tracking, and project organization using Jira Cloud for efficient software development.",
-      logo: <img src={linkedinLogo} alt="LinkedIn Learning" className="w-8 h-8 object-contain" />,
+      logo: <img src={linkedinLogo} alt="LinkedIn Learning" className="w-full h-full object-contain rounded-2xl" />,
       link: 'https://www.linkedin.com/learning/certificates/ce89d188cba6ccdcf27abb00294247ad65d783b3d5f76f950ac23066b3be959a?trk=share_certificate'
     },
     {
@@ -971,7 +1019,7 @@ const Certifications = () => {
       date: "2025",
       description:
         "Earned recognition for completing hands-on learning modules focused on Google Cloud CLI, Generative AI fundamentals, and the Google Gemini ecosystem.",
-      logo: <img src={googleDevelopersLogo} alt="Google Developers" className="w-8 h-8 object-contain" />,
+      logo: <img src={googleDevelopersLogo} alt="Google Developers" className="w-full h-full object-contain rounded-2xl" />,
       link: 'https://developers.google.com/profile/badges/recognitions/learnings/'
     },
     {
@@ -980,7 +1028,7 @@ const Certifications = () => {
       date: "2025",
       description:
         "Explored the modern generative AI ecosystem, including model types, real-world use cases, and core concepts behind LLM-driven applications.",
-      logo: <img src={googleCloudLogo} alt="Google Cloud" className="w-8 h-8 object-contain" />,
+      logo: <img src={googleCloudLogo} alt="Google Cloud" className="w-full h-full object-contain rounded-2xl" />,
       link: 'https://www.cloudskillsboost.google/public_profiles/32a92ffd-70a1-42aa-8490-b3a80f606d67/badges/18489594?utm_medium=social&utm_source=linkedin&utm_campaign=ql-social-share'
     }
   ];
@@ -991,7 +1039,7 @@ const Certifications = () => {
       className="py-20 bg-white dark:bg-gray-900"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true }}
+      viewport={{ once: true, margin: "-100px" }}
     >
       <div className="container mx-auto px-6">
         <motion.div
@@ -999,12 +1047,12 @@ const Certifications = () => {
           variants={fadeInUp}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-gray-100 mb-6">
-            Certifications & <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent dark:from-blue-500 dark:to-purple-500">Achievements</span>
+            Certifications & <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Achievements</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto"></div>
         </motion.div>
         <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
           variants={staggerContainer}
         >
           {certifications.map((cert, index) => (
@@ -1013,22 +1061,31 @@ const Certifications = () => {
               href={cert.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl dark:shadow-gray-700/50 transition-all duration-300 flex flex-col cursor-pointer"
+              className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl border border-gray-100 dark:border-gray-700 transition-all duration-300 flex flex-col h-full group"
               variants={fadeInUp}
               whileHover={{ y: -5 }}
             >
-              <div className="flex-grow">
-                <div className="flex items-start mb-4">
-                  <div className="w-12 h-12 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                    {cert.logo}
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100">{cert.title}</h3>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{cert.issuer} &bull; {cert.date}</p>
-                  </div>
+              <div className="flex items-start justify-between mb-6">
+                <div className="w-16 h-16 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                  {cert.logo}
                 </div>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">{cert.description}</p>
+                <div className="p-2 bg-blue-50 dark:bg-blue-900/20 rounded-full text-blue-600 dark:text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                  <ExternalLink className="w-5 h-5" />
+                </div>
               </div>
+              
+              <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{cert.title}</h3>
+              
+              <div className="flex items-center text-sm font-medium text-gray-500 dark:text-gray-400 mb-4">
+                <Award className="w-4 h-4 mr-1.5 text-blue-500" />
+                {cert.issuer}
+                <span className="mx-2">•</span>
+                {cert.date}
+              </div>
+              
+              <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed flex-grow">
+                {cert.description}
+              </p>
             </motion.a>
           ))}
         </motion.div>
