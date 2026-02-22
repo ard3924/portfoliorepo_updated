@@ -372,7 +372,7 @@ const About = memo(() => {
             variants={fadeInUp}
           >
             <a
-              href="/autoCV__1_ (22).pdf"
+              href="/autoCV (1).pdf"
               download
               className="inline-flex items-center bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
             >
@@ -590,7 +590,7 @@ const Skills = memo(() => {
 const Experience = () => {
   const experiences = [
     {
-      title: 'Associate Software Engineer (Incoming)',
+      title: 'Associate Software Engineer',
       company: 'EY Global Delivery Services (EY GDS)',
       location: 'Trivandrum, Kerala',
       period: 'Feb 2026 – Present',
