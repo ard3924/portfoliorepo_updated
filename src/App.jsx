@@ -230,13 +230,27 @@ const Hero = memo(() => {
   return (
     <motion.section
       id="hero"
-      className="min-h-screen flex items-center justify-center pt-24 md:pt-0 bg-white dark:bg-gray-900"
+      className="relative min-h-screen flex items-center justify-center pt-24 md:pt-0 bg-white dark:bg-gray-900 overflow-hidden"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1, ease: "easeOut" }}
       style={{ willChange: 'opacity' }}
     >
-      <div className="container mx-auto px-6">
+      {/* Background Animated Blobs */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none">
+        <motion.div 
+          animate={{ x: [0, 100, 0], y: [0, -50, 0], scale: [1, 1.2, 1] }}
+          transition={{ duration: 10, repeat: Infinity, repeatType: "reverse" }}
+          className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-blue-400/20 dark:bg-blue-600/10 rounded-full blur-3xl"
+        />
+        <motion.div 
+          animate={{ x: [0, -100, 0], y: [0, 50, 0], scale: [1, 1.1, 1] }}
+          transition={{ duration: 12, repeat: Infinity, repeatType: "reverse" }}
+          className="absolute top-[20%] right-[-10%] w-80 h-80 bg-purple-400/20 dark:bg-purple-600/10 rounded-full blur-3xl"
+        />
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
         {/* Added 'max-w-5xl mx-auto' to bring content closer to the center */}
         <div className="grid md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
 
@@ -258,6 +272,8 @@ const Hero = memo(() => {
             >
               <TypeAnimation
                 sequence={[
+                  'Associate Software Engineer at EY GDS',
+                  2000,
                   'Computer Science Graduate',
                   2000,
                   'Full Stack Developer',
@@ -318,7 +334,7 @@ const About = memo(() => {
     {
       icon: Code,
       title: 'Full Stack Developer',
-      description: 'Proficient in MERN stack and modern web technologies'
+      description: 'Building scalable enterprise and web solutions'
     },
     {
       icon: Lightbulb,
@@ -333,7 +349,7 @@ const About = memo(() => {
     {
       icon: User,
       title: 'Team Player',
-      description: 'Collaborative and adaptable in dynamic environments'
+      description: 'Thriving in global, cross-functional team environments'
     }
   ];
 
@@ -363,7 +379,7 @@ const About = memo(() => {
             variants={fadeInUp}
           >
             <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed text-center">
-              Innovative Computer Science graduate passionate about crafting digital experiences that matter. Specializing in <span className="font-semibold text-blue-600">Full Stack Development</span> and <span className="font-semibold text-purple-600">Generative AI</span>, I build scalable solutions from local marketplaces to intelligent assistants. Driven by curiosity and collaboration, I thrive on turning complex challenges into elegant, user-centric innovations.
+              Innovative Computer Science graduate and Associate Software Engineer at EY GDS, passionate about crafting digital experiences that matter. Specializing in <span className="font-semibold text-blue-600">Full Stack Development</span> and <span className="font-semibold text-purple-600">Generative AI</span>, I build scalable solutions ranging from enterprise services to intelligent assistants. Driven by curiosity and collaboration, I thrive on turning complex challenges into elegant, user-centric innovations.
             </p>
           </motion.div>
 
@@ -454,6 +470,9 @@ const skillIcons = {
   materialui: <img src={materialuiIcon} alt="Material UI" className="w-12 h-12" />,
   cursor: <img src={cursorlogo} alt="Cursor AI" className="w-15 h-12" />,
   antigravity: <img src={antigravitylogo} alt="AntiGravity AI" className="w-12 h-12" />,
+  strategy: <Target className="w-12 h-12 text-blue-500" />,
+  consulting: <Briefcase className="w-12 h-12 text-blue-500" />,
+  innovation: <Lightbulb className="w-12 h-12 text-blue-500" />,
 };
 
 const Skills = memo(() => {
@@ -464,6 +483,7 @@ const Skills = memo(() => {
       cyan: 'from-cyan-600 to-blue-600',
       orange: 'from-orange-500 to-red-600',
       pink: 'from-pink-500 to-rose-600',
+      purple: 'from-purple-600 to-fuchsia-600',
     };
     return gradients[color] || 'from-blue-600 to-purple-600';
   };
@@ -525,6 +545,17 @@ const Skills = memo(() => {
         { name: 'Stitch UI', icon: skillIcons.stitchui },
       ],
       color: 'orange',
+    },
+    {
+      title: 'Consulting & Strategy',
+      icon: Briefcase,
+      skills: [
+        { name: 'Strategic Planning', icon: skillIcons.strategy },
+        { name: 'Business Consulting', icon: skillIcons.consulting },
+        { name: 'Innovation', icon: skillIcons.innovation },
+        { name: 'Agile & Scrum', icon: skillIcons.adaptability },
+      ],
+      color: 'purple',
     },
     {
       title: 'Soft Skills',
@@ -592,14 +623,24 @@ const Experience = () => {
     {
       title: 'Associate Software Engineer',
       company: 'EY Global Delivery Services (EY GDS)',
-      location: 'Trivandrum, Kerala',
+      location: 'Technopark Campus & Kinfra IT Park, Trivandrum, Kerala',
       period: 'Feb 2026 – Present',
       type: 'Full-time',
       achievements: [
         {
-          title: 'Enterprise Solution Delivery',
-          description: 'Selected to join the technology consulting practice to engineer scalable enterprise solutions. Will focus on full-cycle software development, leveraging modern frameworks to drive digital transformation for global clients.',
-          tech: ['Enterprise Architecture', 'Full Stack Development', 'Agile Methodologies']
+          title: 'Global Consulting & Service Delivery',
+          description: 'Partnering with the Consulting service line to deliver innovative, scalable business services that support EY’s global operations and drive digital transformation for international clients.',
+          tech: ['Consulting', 'Scalable Services', 'Digital Transformation']
+        },
+        {
+          title: 'Advanced Technology Integration',
+          description: 'Utilizing advanced technologies such as automation, AI, and cloud-based delivery models to engineer efficient solutions that solve complex business challenges.',
+          tech: ['Automation', 'Artificial Intelligence', 'Cloud Delivery']
+        },
+        {
+          title: 'Global Collaboration & Value Creation',
+          description: 'Collaborating with diverse, cross-functional global teams to foster innovation, build client trust, and deliver sustainable long-term value.',
+          tech: ['Global Collaboration', 'Agile', 'Client Value']
         }
       ]
     },
@@ -1028,7 +1069,7 @@ const Certifications = () => {
       date: "2025",
       description:
         "Explored the modern generative AI ecosystem, including model types, real-world use cases, and core concepts behind LLM-driven applications.",
-      logo: <img src={googleCloudLogo} alt="Google Cloud" className="w-full h-full object-contain rounded-2xl" />,
+      logo: <img src={googleCloudLogo} alt="Google Cloud" className="w-full h-full object-contain rounded-2xl scale-125" />,
       link: 'https://www.cloudskillsboost.google/public_profiles/32a92ffd-70a1-42aa-8490-b3a80f606d67/badges/18489594?utm_medium=social&utm_source=linkedin&utm_campaign=ql-social-share'
     }
   ];
@@ -1066,7 +1107,7 @@ const Certifications = () => {
               whileHover={{ y: -5 }}
             >
               <div className="flex items-start justify-between mb-6">
-                <div className="w-16 h-16 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                <div className="w-16 h-16 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                   {cert.logo}
                 </div>
                 <div className="p-2 bg-blue-50 dark:bg-blue-900/20 rounded-full text-blue-600 dark:text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
@@ -1156,7 +1197,7 @@ const Contact = () => {
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 mx-auto mb-8"></div>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Let's connect and discuss opportunities to work together
+            Let's connect and discuss technology, innovation, and shared interests
           </p>
         </motion.div>
 
@@ -1208,7 +1249,7 @@ const Contact = () => {
             variants={fadeInUp}
           >
             <p className="text-gray-500 dark:text-gray-400 mb-6">
-              I'm always open to discussing new opportunities and interesting projects.
+              I'm always open to connecting with professionals and discussing interesting projects.
             </p>
             <motion.a
               href="mailto:aravindr3924@gmail.com"
@@ -1263,29 +1304,6 @@ const BackToTopButton = () => {
         </motion.button>
       )}
     </AnimatePresence>
-  );
-};
-
-const ThemeToggle = () => {
-  const { theme, toggleTheme } = useTheme();
-
-  return (
-    <motion.button
-      onClick={toggleTheme}
-      className="fixed bottom-20 right-5 w-14 h-14 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-300 dark:border-gray-600 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 z-50"
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
-      aria-label="Toggle theme"
-    >
-      <motion.div
-        key={theme}
-        initial={{ opacity: 0, rotate: -90 }}
-        animate={{ opacity: 1, rotate: 0 }}
-        transition={{ duration: 0.3 }}
-      >
-        {theme === 'light' ? <Moon className="text-gray-800" /> : <Sun className="text-yellow-400" />}
-      </motion.div>
-    </motion.button>
   );
 };
 
