@@ -6,19 +6,43 @@ import {
   Download, Briefcase, MapPin, Calendar, ExternalLink,
   GraduationCap, Award, Sun, Moon, Menu, X, ArrowUp, Send, Atom, FileCode,
   Palette, Wind, Move, Server, Database, DatabaseZap, Puzzle, Users,
-  MessageSquare, RefreshCw, Clock, Bot, ChevronRight, Wrench, Cloud, Box,
+  MessageSquare, RefreshCw, Clock, Bot, ChevronRight, ChevronLeft, Wrench, Cloud, Box,
   PenTool, HandHeart
 } from 'lucide-react';
 import { useTheme } from './context/ThemeContext.jsx';
 
 // Import project images from assets folder
 import localfinds from './assets/localfinds.png';
+import localfinds2 from './assets/localfinds2.png';
+import localfinds3 from './assets/localfinds3.png';
+import localfinds4 from './assets/localfinds4.png';
+import localfinds5 from './assets/localfinds5.png';
+import localfinds6 from './assets/localfinds6.png';
+import localfinds7 from './assets/localfinds7.png';
+import localfinds8 from './assets/localfinds8.png';
 import ignite from './assets/ignite.png';
+import ignite2 from './assets/ignite2.png';
+import ignite3 from './assets/ignite3.png';
+import ignite4 from './assets/ignite4.png';
+import ignite5 from './assets/ignite5.png';
+import ignite6 from './assets/ignite6.png';
+import ignite7 from './assets/ignite7.png';
+import ignite8 from './assets/ignite8.png';
 import aiTextbook from './assets/AI TextBook Assistant.png';
+import aiTextbook2 from './assets/aitextbookassistent2.png';
 import malware from './assets/Malware.png';
+import malware1 from './assets/Malware1.png';
+import malware3 from './assets/Malware3.png';
+import malware4 from './assets/Malware4.png';
 import foodDeli from './assets/Food Deli.png';
+import foodDeli2 from './assets/Food Deli2.png';
+import foodDeli3 from './assets/Food Deli3.png';
 import sowMiniApp from './assets/sowminiapp.png';
+import sowMiniApp2 from './assets/sowminiapp2.png';
+import sowMiniApp3 from './assets/sowminiapp3.png';
+import sowMiniApp4 from './assets/sowminiapp4.png';
 import aiVoiceAssistant from './assets/aivoiceagent.png';
+import aiVoiceAssistant1 from './assets/aivoiceagent1.png';
 
 // Import certificate logo images from assets folder
 import ictAcademyLogo from './assets/ICT_Academy_Kerala.webp.png';
@@ -746,63 +770,273 @@ const Experience = () => {
   );
 };
 
-const ProjectCard = ({ project }) => {
+const ProjectCard = ({ project, onClick }) => {
   return (
-    <div className="group bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl dark:shadow-gray-700/50 transition-all duration-300 overflow-hidden flex flex-col h-full">
-      <div className="overflow-hidden">
-        <img src={project.image} alt={project.title} loading="lazy" className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" />
+    <motion.div
+      className="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl dark:shadow-gray-700/20 border border-gray-100 dark:border-gray-700 transition-all duration-300 flex flex-col h-full cursor-pointer"
+      onClick={onClick}
+      whileHover={{ y: -8 }}
+    >
+      <div className="relative overflow-hidden aspect-video">
+        <div className="absolute inset-0 bg-gray-200 dark:bg-gray-700 animate-pulse" />
+        <img 
+          src={project.image} 
+          alt={project.title} 
+          loading="lazy" 
+          className="relative w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" 
+        />
+        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
+          <span className="inline-flex items-center px-4 py-2 rounded-full bg-white/90 text-gray-900 text-sm font-semibold shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+            View Details <ChevronRight className="w-4 h-4 ml-1" />
+          </span>
+        </div>
       </div>
+      
       <div className="p-6 flex flex-col flex-grow">
-        <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">{project.title}</h3>
-        <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm leading-relaxed flex-grow">{project.description}</p>
+        <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-2 line-clamp-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+          {project.title}
+        </h3>
+        
+        <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm leading-relaxed line-clamp-2 flex-grow">
+          {project.description}
+        </p>
 
         <div className="flex flex-wrap gap-2 mb-4">
-          {project.technologies.map((tech, techIndex) => (
+          {project.technologies.slice(0, 3).map((tech, index) => (
             <span
-              key={techIndex}
-              className="bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300 px-3 py-1 rounded-full text-xs font-medium"
+              key={index}
+              className="px-2.5 py-1 text-xs font-medium rounded-md bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:text-blue-300 border border-blue-100 dark:border-blue-800"
             >
               {tech}
             </span>
           ))}
+          {project.technologies.length > 3 && (
+            <span className="px-2.5 py-1 text-xs font-medium rounded-md bg-gray-50 text-gray-600 dark:bg-gray-800 dark:text-gray-400 border border-gray-100 dark:border-gray-700">
+              +{project.technologies.length - 3}
+            </span>
+          )}
         </div>
 
-        <div className="mt-auto flex items-center space-x-4">
-          {project.github && (
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-gray-800 dark:bg-gray-700 hover:bg-gray-900 dark:hover:bg-gray-600 transition-colors"
-            >
-              <Github className="w-4 h-4 mr-2" />
-              Code
-            </a>
-          )}
-          {project.demo && (
-            <a
-              href={project.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 dark:text-blue-300 dark:bg-blue-900/50 dark:hover:bg-blue-800/50 transition-colors"
-            >
-              <ExternalLink className="w-4 h-4 mr-2" />
-              Demo
-            </a>
-          )}
+        <div className="pt-4 mt-auto border-t border-gray-100 dark:border-gray-700 flex items-center justify-between">
+          <div className="flex gap-4">
+            {project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <Github size={16} className="mr-1.5" />
+                Code
+              </a>
+            )}
+            {project.demo && (
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <ExternalLink size={16} className="mr-1.5" />
+                Demo
+              </a>
+            )}
+          </div>
+          <span className="text-xs font-medium text-blue-600 dark:text-blue-400 flex items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            Details <ChevronRight size={14} className="ml-0.5" />
+          </span>
         </div>
       </div>
-    </div>
+    </motion.div>
+  );
+};
+
+const ProjectModal = ({ project, onClose }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+
+  const images = project.images || [project.image];
+  const minSwipeDistance = 50;
+
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
+    document.addEventListener('keydown', handleEscape);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'unset';
+    };
+  }, [onClose]);
+
+  const nextImage = (e) => {
+    e?.stopPropagation();
+    setCurrentIndex((prev) => (prev + 1) % images.length);
+  };
+
+  const prevImage = (e) => {
+    e?.stopPropagation();
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    if (isLeftSwipe) nextImage();
+    if (isRightSwipe) prevImage();
+  };
+
+  return (
+    <motion.div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={onClose}
+    >
+      <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
+
+      <motion.div
+        className="relative bg-white dark:bg-gray-900 rounded-2xl shadow-2xl w-full max-w-5xl max-h-[90vh] overflow-hidden flex flex-col lg:flex-row"
+        initial={{ scale: 0.9, opacity: 0, y: 20 }}
+        animate={{ scale: 1, opacity: 1, y: 0 }}
+        exit={{ scale: 0.9, opacity: 0, y: 20 }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 z-20 p-2 bg-black/50 hover:bg-black/70 text-white rounded-full transition-colors backdrop-blur-md"
+        >
+          <X size={20} />
+        </button>
+
+        {/* Image Section */}
+        <div 
+          className="w-full lg:w-3/5 bg-gray-100 dark:bg-black relative flex items-center justify-center min-h-[250px] sm:min-h-[350px] lg:h-auto group"
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={currentIndex}
+              src={images[currentIndex]}
+              alt={`${project.title} - Image ${currentIndex + 1}`}
+              className="w-full h-full object-contain max-h-[50vh] lg:max-h-full"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            />
+          </AnimatePresence>
+
+          {images.length > 1 && (
+            <>
+              <button
+                onClick={prevImage}
+                className="absolute left-4 p-2 bg-black/50 hover:bg-black/70 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden sm:block"
+              >
+                <ChevronLeft size={24} />
+              </button>
+              <button
+                onClick={nextImage}
+                className="absolute right-4 p-2 bg-black/50 hover:bg-black/70 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden sm:block"
+              >
+                <ChevronRight size={24} />
+              </button>
+              
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                {images.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setCurrentIndex(idx)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      idx === currentIndex ? 'bg-white w-6' : 'bg-white/50 hover:bg-white/80'
+                    }`}
+                  />
+                ))}
+              </div>
+            </>
+          )}
+        </div>
+
+        {/* Content Section */}
+        <div className="w-full lg:w-2/5 p-6 lg:p-8 overflow-y-auto bg-white dark:bg-gray-900">
+          <h3 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-gray-100 mb-4">
+            {project.title}
+          </h3>
+          
+          <div className="flex flex-wrap gap-2 mb-6">
+            {project.technologies.map((tech, index) => (
+              <span
+                key={index}
+                className="px-3 py-1 text-sm font-medium rounded-full bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:text-blue-300 border border-blue-100 dark:border-blue-800"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+
+          <div className="prose dark:prose-invert max-w-none mb-8">
+            <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-base">
+              {project.description}
+            </p>
+          </div>
+
+          <div className="flex flex-wrap gap-4 mt-auto">
+            {project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-xl text-white bg-gray-900 hover:bg-gray-800 dark:bg-gray-700 dark:hover:bg-gray-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+              >
+                <Github className="w-5 h-5 mr-2" />
+                View Code
+              </a>
+            )}
+            {project.demo && (
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-xl text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+              >
+                <ExternalLink className="w-5 h-5 mr-2" />
+                Live Demo
+              </a>
+            )}
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
 const Projects = () => {
+  const [selectedProject, setSelectedProject] = useState(null);
 
   const projects = [
     {
      title: 'LocalFinds – Local Marketplace Platform',
   description: 'LocalFinds is a full-stack e-commerce marketplace platform designed to connect local buyers and sellers within the same community. The application supports multi-role authentication (buyers, sellers, and admins), real-time chat and notifications using Socket.io, secure JWT-based authentication with OTP-driven password recovery, and a complete order lifecycle with invoice generation. Sellers are provided with dashboards for product, order, and business management, while admins can moderate users, products, and platform activity. The platform is built with scalability, security, and real-world marketplace workflows in mind.',
   image: localfinds,
+  images: [localfinds, localfinds2, localfinds3, localfinds4, localfinds5, localfinds6, localfinds7, localfinds8],
   technologies: [
     'React',
     'Tailwind CSS',
@@ -822,6 +1056,7 @@ const Projects = () => {
       title: 'Ignite - Freelance Collaboration Platform',
   description: 'Ignite is a full-stack MERN web application designed to connect clients with freelance developers for group-based projects. The platform supports role-based authentication, project posting, applicant management, task tracking, and a complete work submission and review workflow. It features secure JWT-based authentication, RESTful APIs, cloud-based media handling with Cloudinary, and a responsive, interactive React frontend. Built with scalability and real-world collaboration workflows in mind.',
       image: ignite,
+      images: [ignite, ignite2, ignite3, ignite4, ignite5, ignite6, ignite7, ignite8],
       technologies: ['React', 'Node.js', 'MongoDB', 'Express', 'Tailwind CSS', 'Cloudinary', 'Framer Motion', 'Azure'],
       github: 'https://github.com/ard3924/Ignite.git',
       demo: 'https://ignite-woad.vercel.app/home'
@@ -830,21 +1065,24 @@ const Projects = () => {
       title: 'AI Textbook Assistant – RAG-Based Academic Q&A System',
       description: 'AI Textbook Assistant is a Retrieval-Augmented Generation (RAG) application that transforms any PDF textbook into an interactive academic assistant. The system enables users to ask complex, textbook-specific questions and receive detailed, context-aware answers strictly grounded in the source material, complete with page-level citations. It leverages a local Sentence-Transformer model for cost-free embeddings, a FAISS vector store for efficient retrieval, and Google Gemini 2.5 Pro for high-quality generation. The application also supports proactive follow-up questions, configurable retrieval parameters, and optional external web search when textbook knowledge is insufficient.',
       image: aiTextbook,
+      images: [aiTextbook, aiTextbook2],
       technologies: ['Python', 'Streamlit', 'Google Gemini', 'FAISS', 'Sentence-Transformers', 'RAG', 'LangChain'],
       github: 'https://github.com/ard3924/AI_TextBook_Assitant.git',
     },
     {
   title: 'SOW Mini App – Login, Terms & Pricelist',
-  description: 'A full-stack single-page web application developed as part of a Statement of Work (SOW) for Lättfaktura. The app was built to closely match a real production system specification, including JWT-based authentication, multilingual support (EN/SE) powered by PostgreSQL, a responsive UI across mobile, tablet, and desktop, and an editable pricelist with live data persistence. Deployed on Linux-based cloud infrastructure but do to free-tier limitations switched the backend to render and frontend to vercel.',
+  description: 'A full-stack single-page web application developed as part of a Statement of Work (SOW) for a company. The app was built to closely match a real production system specification, including JWT-based authentication, multilingual support (EN/SE) powered by PostgreSQL, a responsive UI across mobile, tablet, and desktop, and an editable pricelist with live data persistence. Deployed on Linux-based cloud infrastructure but do to free-tier limitations switched the backend to render and frontend to vercel.',
   image: sowMiniApp,
+  images: [sowMiniApp, sowMiniApp2, sowMiniApp3, sowMiniApp4],
   technologies: ['React.js (Vite)', 'Vanilla CSS', 'Node.js', 'Express.js', 'PostgreSQL (Neon)', 'JWT', 'Render'],
   github: 'https://github.com/ard3924/Mini_app_master',
   demo: 'https://mini-app-master.onrender.com/'
 },
 {
- title: 'Vaiu AI – Voice-Based Restaurant Booking Assistant',
-  description: 'Vaiu AI is an intelligent voice-driven restaurant booking assistant that enables hands-free table reservations through natural conversation. The system uses browser-based speech recognition and synthesis to guide users through a structured booking flow, collecting preferences, special requests, and confirmation details. It integrates real-time weather data to recommend indoor or outdoor seating, supports full CRUD booking management, and maintains conversational session state for a smooth user experience. Built with a modern React frontend and a Node.js backend, Vaiu AI demonstrates applied conversational AI, API integration, and real-world booking workflows.',
+ title: 'Voice-Based Restaurant Booking Assistant',
+  description: 'An intelligent voice-driven restaurant booking assistant that enables hands-free table reservations through natural conversation. The system uses browser-based speech recognition and synthesis to guide users through a structured booking flow, collecting preferences, special requests, and confirmation details. It integrates real-time weather data to recommend indoor or outdoor seating, supports full CRUD booking management, and maintains conversational session state for a smooth user experience. Built with a modern React frontend and a Node.js backend, Vaiu AI demonstrates applied conversational AI, API integration, and real-world booking workflows.',
   image: aiVoiceAssistant,
+  images: [aiVoiceAssistant, aiVoiceAssistant1],
   technologies: [
     'React',
     'Vite',
@@ -864,17 +1102,19 @@ const Projects = () => {
       title: 'Android Malware Detection – Permission-Based ML Classifier',
   description: 'A web-based machine learning application that detects whether an Android application is malicious or benign based on the permissions it requests. The system uses pre-trained classification models, including Logistic Regression and Extra Trees Classifier, to provide real-time predictions through an intuitive Flask-based interface. Users can manually select permissions to simulate application behavior, visualize prediction outcomes, compare model performance, and export results as downloadable PDF reports. The project demonstrates applied machine learning for cybersecurity use cases with a focus on interpretability and usability.',
       image: malware,
+      images: [malware, malware1, malware3, malware4],
       technologies: ['Python', 'Flask', 'Scikit-learn', 'Pandas', 'Bootstrap', 'Google Charts'],
-      github: 'https://github.com/ard3924/Major_Project.git', // Update with actual link
-      demo: null // Set to null since this is likely a local project, or add link if deployed
+      github: 'https://github.com/ard3924/Major_Project.git',
+      demo: null
     },
     {
       title: 'FoodDeli - Restaurant Delivery App',
   description: 'A full-stack food delivery application that enables users to browse food items, manage carts, place orders, and complete secure payments using Stripe. The platform includes a customer-facing frontend, a dedicated admin panel for managing food items and orders, and a robust backend API with JWT-based authentication. Built with a scalable MERN architecture, the app supports image uploads, order history tracking, and responsive design for seamless use across devices.',
       image: foodDeli,
+      images: [foodDeli, foodDeli2, foodDeli3],
       technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Redux Toolkit', 'Stripe', 'Tailwind CSS'],
-      github: 'https://github.com/ard3924/Minor_Project.git', // Update with actual link
-      demo: null // Update with actual link
+      github: 'https://github.com/ard3924/Minor_Project.git',
+      demo: null
     },
   ];
 
@@ -902,11 +1142,18 @@ const Projects = () => {
         >
           {projects.map((project, index) => (
             <motion.div key={index} variants={fadeInUp}>
-              <ProjectCard project={project} />
+              <ProjectCard project={project} onClick={() => setSelectedProject(project)} />
             </motion.div>
           ))}
         </motion.div>
       </div>
+
+      {/* Modal */}
+      <AnimatePresence>
+        {selectedProject && (
+          <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
+        )}
+      </AnimatePresence>
     </motion.section>
   );
 };
