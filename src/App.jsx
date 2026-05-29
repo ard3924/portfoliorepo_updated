@@ -53,6 +53,7 @@ import unstopLogo from './assets/unstop-icon-800x800.png';
 import microsoftLogo from './assets/Microsoft_icon.svg.png';
 import googleCloudLogo from './assets/google cloud.png';
 import googleDevelopersLogo from './assets/googledeveloperslogo.png';
+import azurefundamentalsLogo from './assets/az900bgremoved.png';
 
 // Import SVG icons from assets folder
 import jsIcon from './assets/js.svg';
@@ -1199,7 +1200,7 @@ const Education = () => {
           className="max-w-4xl mx-auto grid gap-8"
           variants={staggerContainer}
         >
-          {education.map((edu, index) => (
+{education.map((edu, index) => (
             <motion.div
               key={index}
               className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl border border-gray-100 dark:border-gray-700 transition-all duration-300"
@@ -1239,6 +1240,15 @@ const Education = () => {
 
 const Certifications = () => {
   const certifications = [
+   {
+      title: 'Microsoft Azure Fundamentals(AZ-900)',
+      issuer: 'Microsoft',
+      date: '2026',
+      description:
+        'Validated fundamentals of Microsoft Azure, including cloud concepts, core Azure services, security, privacy, pricing, and support.',
+      logo: <img src={azurefundamentalsLogo} alt="Microsoft" className="w-full h-full object-contain rounded-2xl" />,
+      link: 'https://learn.microsoft.com/api/credentials/share/en-us/AravindR-3589/4968CD6C9482D2B2?sharingId=C87489870AF11C9E'
+    },
     {
       title: 'Certified Specialist in Full Stack Development (MERN) ',
       issuer: 'ICT Academy of Kerala',
@@ -1322,7 +1332,7 @@ const Certifications = () => {
   ];
 
   return (
-    <motion.section
+      <motion.section
       id="certifications"
       className="py-20 bg-white dark:bg-gray-900"
       initial="hidden"
