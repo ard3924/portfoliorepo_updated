@@ -85,6 +85,14 @@ import vercelIcon from './assets/vercel.png';
 import geminilogo from './assets/gemini-removebg-preview.png';
 import cursorlogo from './assets/cursorlogo-removebg-preview.png';
 import antigravitylogo from './assets/antigravity.png';
+import datadogIcon from './assets/datadog.svg';
+import serviceNowIcon from './assets/snow2.png';
+import muleSoftIcon from './assets/mulesoftlogo.png';
+import guidewireIcon from './assets/guidewire.png';
+import rallyIcon from './assets/rally.webp';
+import salesforceIcon from './assets/Salesforce-logo.webp';
+import azureMonitoringIcon from './assets/azure_monitor_-removebg-preview.png';
+
 
 // --- Animation Variants (Reusable) ---
 const fadeInUp = {
@@ -299,9 +307,7 @@ const Hero = memo(() => {
                 sequence={[
                   'Associate Software Engineer at EY GDS',
                   2000,
-                  'Computer Science Graduate',
-                  2000,
-                  'Full Stack Developer',
+                  'Full Stack Developer • Cloud Operations Engineer',
                   2000,
                   'AI Enthusiast',
                   2000,
@@ -403,8 +409,8 @@ const About = memo(() => {
             className="bg-white/80 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 shadow-xl mb-12"
             variants={fadeInUp}
           >
-            <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed text-center">
-              Innovative Computer Science graduate and Associate Software Engineer at EY GDS, passionate about crafting digital experiences that matter. Specializing in <span className="font-semibold text-blue-600">Full Stack Development</span> and <span className="font-semibold text-purple-600">Generative AI</span>, I build scalable solutions ranging from enterprise services to intelligent assistants. Driven by curiosity and collaboration, I thrive on turning complex challenges into elegant, user-centric innovations.
+              <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed text-center">
+              Full Stack Developer with Enterprise Cloud Operations experience—an Innovative Computer Science graduate and Associate Software Engineer at EY GDS. I specialize in <span className="font-semibold text-blue-600">Full Stack Development</span> and <span className="font-semibold text-purple-600">Generative AI</span>, while also bridging development with real-world enterprise operations: Cloud Monitoring & Observability, enterprise service operations, and production support. I’ve worked on enterprise workflows and digital pricing systems, collaborating with global clients to deliver reliable services from build to run—turning complex challenges into elegant, user-centric outcomes.
             </p>
           </motion.div>
 
@@ -476,6 +482,14 @@ const skillIcons = {
   git: <img src={gitIcon} alt="Git" className="w-12 h-12" />,
   vscode: <img src={vscodeIcon} alt="VS Code" className="w-12 h-12" />,
   azure: <img src={azureIcon} alt="Microsoft Azure" className="w-12 h-12" />,
+  azureMonitoring: <img src={azureMonitoringIcon} alt="Azure Monitoring" className="w-16 h-12 object-contain" />,
+  datadog: <img src={datadogIcon} alt="Datadog" className="w-12 h-12" />,
+
+  serviceNow: <img src={serviceNowIcon} alt="ServiceNow" className="w-12 h-12" />,
+  muleSoft: <img src={muleSoftIcon} alt="MuleSoft" className="w-12 h-12" />,
+  guidewire: <img src={guidewireIcon} alt="Guidewire" className="w-12 h-12" />,
+  rally: <img src={rallyIcon} alt="Rally" className="w-12 h-12" />,
+  salesforce: <img src={salesforceIcon} alt="Salesforce" className="w-12 h-12" />,
   docker: <img src={dockerIcon} alt="Docker" className="w-12 h-12" />,
   postman: <img src={postmanIcon} alt="Postman" className="w-12 h-12" />,
   figma: <img src={figmaIcon} alt="Figma" className="w-12 h-12" />,
@@ -544,10 +558,16 @@ const Skills = memo(() => {
       color: 'green',
     },
     {
-      title: 'Cloud & DevOps',
+      title: 'Cloud & Enterprise Operations',
       icon: Cloud,
       skills: [
         { name: 'Microsoft Azure', icon: skillIcons.azure },
+        { name: 'Azure Monitoring', icon: skillIcons.azureMonitoring },
+        { name: 'Datadog', icon: skillIcons.datadog },
+        { name: 'ServiceNow', icon: skillIcons.serviceNow },
+        { name: 'MuleSoft (Anypoint Platform)', icon: skillIcons.muleSoft },
+        { name: 'Guidewire', icon: skillIcons.guidewire },
+        { name: 'Rally (Agile tool)', icon: skillIcons.rally },
         { name: 'Docker', icon: skillIcons.docker },
         { name: 'AWS (EC2)', icon: skillIcons.aws },
         { name: 'Render', icon: skillIcons.render },
@@ -576,6 +596,11 @@ const Skills = memo(() => {
       icon: Briefcase,
       skills: [
         { name: 'Strategic Planning', icon: skillIcons.strategy },
+        { name: 'Monitoring & Incident Management', icon: skillIcons.time },
+        { name: 'Enterprise Integration (MuleSoft)', icon: skillIcons.communication },
+        { name: 'IT Service Management (ServiceNow)', icon: skillIcons.consulting },
+        { name: 'Agile Delivery (Rally)', icon: skillIcons.adaptability },
+        { name: 'Digital Pricing Systems', icon: skillIcons.innovation },
         { name: 'Business Consulting', icon: skillIcons.consulting },
         { name: 'Innovation', icon: skillIcons.innovation },
         { name: 'Agile & Scrum', icon: skillIcons.adaptability },
@@ -653,18 +678,23 @@ const Experience = () => {
       type: 'Full-time',
       achievements: [
         {
-          title: 'Global Consulting & Service Delivery',
-          description: 'Partnering with the Consulting service line to deliver innovative, scalable business services that support EY’s global operations and drive digital transformation for international clients.',
-          tech: ['Consulting', 'Scalable Services', 'Digital Transformation']
+          title: 'Global Consulting & Enterprise Service Delivery',
+          description: 'Partnering with the Consulting service line to deliver reliable, scalable enterprise services that support global operations and drive digital transformation—bridging development with enterprise operations “build to run”.',
+          tech: ['Consulting', 'Enterprise Service Ops', 'Digital Transformation']
         },
         {
-          title: 'Advanced Technology Integration',
-          description: 'Utilizing advanced technologies such as automation, AI, and cloud-based delivery models to engineer efficient solutions that solve complex business challenges.',
-          tech: ['Automation', 'Artificial Intelligence', 'Cloud Delivery']
+          title: 'Cloud Operations Support (Monitoring & Production)',
+          description: 'Monitoring production systems using Datadog and Azure, supporting observability workflows, and coordinating incident response and resolution through structured enterprise processes.',
+          tech: ['Datadog', 'Azure Monitoring', 'Observability', 'Incident Management']
+        },
+        {
+          title: 'Enterprise Workflows & Integrations',
+          description: 'Handling enterprise workflows via ServiceNow, gaining integration exposure through MuleSoft (Anypoint Platform), and supporting digital pricing systems across end-to-end operational lifecycles for global clients.',
+          tech: ['ServiceNow', 'MuleSoft', 'Integration', 'Digital Pricing Systems']
         },
         {
           title: 'Global Collaboration & Value Creation',
-          description: 'Collaborating with diverse, cross-functional global teams to foster innovation, build client trust, and deliver sustainable long-term value.',
+          description: 'Collaborating with diverse, cross-functional global teams to foster innovation, build client trust, and deliver sustainable long-term value with agile delivery practices.',
           tech: ['Global Collaboration', 'Agile', 'Client Value']
         }
       ]
